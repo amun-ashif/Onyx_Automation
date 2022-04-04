@@ -1,6 +1,6 @@
 import {test,expect} from '@playwright/test'
 
-test.describe.only('Search result',()=>{
+test.describe('Search result',()=>{
 
     test("should find search results",async ({page}) => {
         
