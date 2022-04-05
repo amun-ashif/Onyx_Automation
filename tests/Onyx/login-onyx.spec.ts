@@ -1,33 +1,30 @@
-import { expect,test } from "@playwright/test"
+import { test } from "@playwright/test"
+import {LoginPageObjects} from '../../PageObjects/LoginPageObjects'
 
-test('Login with invalid credentials',async ({page}) => {
 
-    await page.goto('https://staging.onyx.amun.com/');
+test.describe.only('Login/logout flow', ()=>{
+    let lp: LoginPageObjects
+
+
+    test.beforeEach(async ({page}) =>{
+        lp =new LoginPageObjects(page)
+        await lp.visit()
+    })
+
+    //Negative Scenario
+    test('Login with invalid credentials',async ({page}) => {
+        await lp.login('ashif@a.com','password')
+        await lp.verfiyError()
     
+    })
+
+    //Positive scenarios
+    test('login with valid credentials',async ({page}) => {
+
+        await lp.login('noam@amun.com','jWeVEvC9JlzBOVgeF337')
+
+        
+    })
+
+
 })
-
-
-test.only('test', async ({ page }) => {
-
-  // Go to https://staging.onyx.amun.com/
-  await page.goto('https://staging.onyx.amun.com/');
-
-  // Click input[name="email"]
-  await page.locator('input[name="email"]').click();
-
-  // Fill input[name="email"]
-  await page.locator('input[name="email"]').fill('noam@amun.com');
-
-
-  // Fill input[name="password"]
-  await page.locator('input[name="password"]').fill('jWeVEvC9JlzBOVgeF337asdasdas');
-
-  // Click text=Login
-  await page.locator('text=Login').click();
-
-
-  const errorMessage= await page.locator('text=Invalid login')
-  await expect(errorMessage).toBeVisible
-
-
-});
