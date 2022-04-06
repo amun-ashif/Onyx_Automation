@@ -1,5 +1,5 @@
 import { test } from "@playwright/test"
-import {LoginPageObjects} from '../../PageObjects/LoginPageObjects'
+import {LoginPageObjects} from "../../PageObjects/LoginPageObjects"
 
 
 test.describe.only('Login/logout flow', ()=>{

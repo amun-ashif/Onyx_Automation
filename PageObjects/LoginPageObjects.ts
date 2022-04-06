@@ -29,7 +29,7 @@ export class LoginPageObjects {
     }
 
     async verfiyError(){
-        await expect(this.errorMessage).toContainText('Invalid login')
+        await expect(this.errorMessage).toContainText('Invalid loginsadsad')
         await this.errorMessage.screenshot({ path:'single_element_screenshot.png'})
     }
 

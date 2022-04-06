@@ -22,6 +22,25 @@ export class TopNavBar {
 
     }
 
+    async chooseTab(String tabName){
+        switch (tabName) {
+            case "Dashboard":
+                this.dashboard.click()
+                break
+            case "PCFs":
+                this.pCf.click()
+                break
+            case "Orders":
+                this.orders.click()
+                break
+
+                
+        
+            default:
+                break;
+        }
+    }
+
 
 
 }
