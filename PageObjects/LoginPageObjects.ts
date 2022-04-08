@@ -7,6 +7,7 @@ export class LoginPageObjects {
     readonly passwordInput: Locator
     readonly loginButton: Locator
     readonly errorMessage: Locator
+    readonly skipLink: Locator
 
     //Init the objects using a constructor
     constructor(page:Page){
@@ -15,6 +16,8 @@ export class LoginPageObjects {
         this.passwordInput = page.locator('input[name="password"]')
         this.loginButton = page.locator('text=Login')
         this.errorMessage = page.locator('div.Toastify__toast-body')
+        this.skipLink = page.locator('Skip for now')
+
     }
 
     //Define methods for this test
@@ -26,11 +29,13 @@ export class LoginPageObjects {
         await this.usernameInput.fill(username)
         await this.passwordInput.fill(password)
         await this.loginButton.click()
+        await this.skipLink.click()
+
     }
 
     async verfiyError(){
-        await expect(this.errorMessage).toContainText('Invalid loginsadsad')
-        await this.errorMessage.screenshot({ path:'single_element_screenshot.png'})
+        await expect(this.errorMessage).toContainText('Invalid login')
+
     }
 
 
